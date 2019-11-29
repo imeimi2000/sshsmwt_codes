@@ -1,4 +1,4 @@
-//0-based
+//1-based
 struct Hopcroft_Karp {
     static const int N = 100005, M = 100005;
     vector<int> edge[N];
@@ -12,7 +12,7 @@ struct Hopcroft_Karp {
     bool bfs(int n) {
         queue<int> q;
         memset(dis, -1, sizeof(dis));
-        for (int i = 0; i < n; ++i) {
+        for (int i = 1; i <= n; ++i) {
             if (mat[i] == -1 && dis[i] == -1) {
                 q.push(i);
                 dis[i] = 0;
@@ -49,7 +49,7 @@ struct Hopcroft_Karp {
         int ret = 0;
         while (bfs(n)) {
             memset(vis, 0, sizeof(vis));
-            for (int i = 0; i < n; ++i) {
+            for (int i = 1; i <= n; ++i) {
                 if (mat[i] == -1) ret += dfs(i);
             }
         }
@@ -66,10 +66,10 @@ struct Hopcroft_Karp {
     vector<int> min_cover(int n, int m) {
         max_matching(n, m);
         memset(ch, 0, sizeof(ch));
-        for (int i = 0; i < n; ++i) if (mat[i] == -1 && !ch[i])
+        for (int i = 1; i <= n; ++i) if (mat[i] == -1 && !ch[i])
             rdfs(i, n);
         vector<int> ret;
-        for (int i = 0; i < n + m; ++i) if ((i < n) != ch[i])
+        for (int i = 1; i <= n + m; ++i) if ((i <= n) != ch[i])
             ret.push_back(i);
         return ret;
     }

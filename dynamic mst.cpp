@@ -3,7 +3,7 @@ struct Disjoint_Set {
     int par[100005];
     int sz[100005];
     vector<int> op;
-    void init() {
+    void clear() {
         for (int i = 0; i < N; ++i) {
             par[i] = i;
             sz[i] = 1;
@@ -98,7 +98,7 @@ struct Dynamic_MST {
         while (t != u.version()) u.restore();
     }
     void solve(int t) {
-        u.init();
+        u.clear();
         sort(es.begin(), es.end());
         solve(1, t, es, 0);
     }
