@@ -24,7 +24,7 @@ struct MCMF {
         q.push(src);
         bool ret = 0;
         while (!q.empty()) {
-            int x = q.front();
+            int x = q.front(); in[x] = false;
             q.pop();
             if (x == sink) ret = 1;
             for (int it = 0; it < (int)edge[x].size(); ++it) {
